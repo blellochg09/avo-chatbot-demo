@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avo Chatbot Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #090b14 0%, #05070d 100%);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .hero {
+      padding: 80px 60px;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      margin: 0 0 20px 0;
+      color: #d7d7d7;
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: #9d90ff;
+      margin: 0;
+    }
+
+    .chatbot-container {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 370px;
+      height: 600px;
+      background: #ded8cf;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #4d2ca8, #5f37d8);
+      color: white;
+      padding: 18px 18px 14px;
+    }
+
+    .chatbot-header h3 {
+      margin: 0 0 6px 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .chatbot-header p {
+      margin: 0;
+      font-size: 14px;
+      opacity: .9;
+      line-height: 1.35;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      background: #ddd8cf;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 84%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      line-height: 1.45;
+      font-size: 15px;
+    }
+
+    .bot {
+      background: #f3f1ec;
+      color: #222;
+      align-self: flex-start;
+    }
+
+    .user {
+      background: #5f37d8;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .chatbot-input {
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      background: #ece8df;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .chatbot-input button {
+      border: none;
+      background: #5f37d8;
+      color: white;
+      border-radius: 14px;
+      padding: 0 18px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Make $1000+ a week.<br>No luck involved.</h1>
+    <p>This is a demo landing page for the Avo chatbot.</p>
+  </div>
+
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h3>You are talking with Avo</h3>
+      <p>Want me to show you how this works?</p>
+    </div>
+
+    <div class="chatbot-messages" id="messages"></div>
+
+    <div class="chatbot-input">
+      <input id="userInput" type="text" placeholder="Type your message..." />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const messages = document.getElementById("messages");
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    function addMessage(text, sender = "bot") {
+      const div = document.createElement("div");
+      div.className = `message ${sender}`;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    async function sendMessage(text) {
+      addMessage(text, "user");
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: text,
+          page: "homepage",
+          isLoggedIn: false
+        })
+      });
+
+      const data = await res.json();
+      addMessage(data.reply, "bot");
+    }
+
+    sendBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = "";
+      sendMessage(text);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const text = input.value.trim();
+        if (!text) return;
+        input.value = "";
+        sendMessage(text);
+      }
+    });
+
+    addMessage("Want me to show you how this works?");
+  </script>
+</body>
+</html>
