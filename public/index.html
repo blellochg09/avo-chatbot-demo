@@ -13,401 +13,28 @@
       margin: 0;
       min-height: 100vh;
       font-family: Arial, sans-serif;
-      color: white;
-      background:
-        radial-gradient(circle at 12% 16%, rgba(97, 76, 255, 0.28) 0%, rgba(97,76,255,0.08) 16%, transparent 32%),
-        linear-gradient(180deg, #070a12 0%, #030507 100%);
-    }
-
-    .page-shell {
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .topbar {
-      width: 100%;
-      padding: 18px 36px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar-left,
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .brand {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-    }
-
-    .nav-link {
-      color: rgba(255,255,255,0.9);
-      font-size: 15px;
-      text-decoration: none;
-    }
-
-    .topbar-right .nav-link {
-      color: rgba(255,255,255,0.9);
-    }
-
-    .launch-btn {
-      background: linear-gradient(135deg, #6b5cff 0%, #5a46ff 100%);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      padding: 14px 28px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(79,70,229,0.25);
-    }
-
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 48px 64px 120px;
-      gap: 48px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-copy {
-      max-width: 560px;
-      padding-top: 40px;
-    }
-
-    .hero-copy h1 {
-      margin: 0 0 28px;
-      font-size: 76px;
-      line-height: 0.98;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: rgba(255,255,255,0.82);
-    }
-
-    .subhead {
-      margin: 0 0 22px;
-      font-size: 20px;
-      color: #9b8dff;
-      font-weight: 600;
-    }
-
-    .email-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .email-box {
-      width: 380px;
-      max-width: 100%;
-      height: 56px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(14,18,30,0.96) 0%, rgba(8,10,18,0.98) 100%);
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      color: rgba(255,255,255,0.45);
-      font-size: 16px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
-    }
-
-    .send-btn {
-      height: 56px;
-      border: none;
-      border-radius: 16px;
-      padding: 0 28px;
-      font-size: 16px;
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      background: linear-gradient(135deg, #6b5cff 0%, #5a46ff 100%);
-      box-shadow: 0 10px 24px rgba(79,70,229,0.25);
-    }
-
-    .hero-note {
-      margin: 0 0 26px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.5;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(180px, 1fr));
-      gap: 18px 24px;
-      max-width: 460px;
-    }
-
-    .benefit {
-      font-size: 16px;
-      color: rgba(255,255,255,0.82);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .benefit-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid #1ee28a;
-      display: inline-block;
-      box-shadow: 0 0 0 3px rgba(30,226,138,0.08);
-    }
-
-    .hero-visual {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 520px;
-    }
-
-    .dashboard-frame {
-      width: 760px;
-      max-width: 100%;
-      border-radius: 26px;
-      padding: 16px;
-      background:
-        linear-gradient(180deg, rgba(25,29,41,0.94) 0%, rgba(10,12,18,0.98) 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.42),
-        0 0 0 1px rgba(255,255,255,0.02) inset,
-        0 0 40px rgba(94, 92, 255, 0.08);
-      transform: rotate(-2deg);
-    }
-
-    .browser-bar {
-      height: 26px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 14px;
-      padding: 0 10px;
-    }
-
-    .browser-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-    }
-
-    .dashboard-body {
-      display: grid;
-      grid-template-columns: 1fr 210px;
-      gap: 16px;
-      min-height: 420px;
-    }
-
-    .main-board {
-      border-radius: 22px;
-      background:
-        radial-gradient(circle at top center, rgba(86, 105, 255, 0.12) 0%, transparent 30%),
-        linear-gradient(180deg, rgba(20,24,34,0.98) 0%, rgba(10,12,18,1) 100%);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 26px 24px 24px;
-      position: relative;
-    }
-
-    .main-board-top {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-
-    .dual-open {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.9);
-      padding: 10px 28px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .matchup {
-      display: grid;
-      grid-template-columns: 1fr 140px 1fr;
-      align-items: center;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .side-card {
-      min-height: 270px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(31,35,47,0.92) 0%, rgba(17,19,27,0.98) 100%);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
-    }
-
-    .team-name {
-      font-size: 22px;
-      color: #f0c43d;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    .odds {
-      font-size: 64px;
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      color: white;
-      margin: 10px 0;
-    }
-
-    .bet-amount {
-      font-size: 62px;
-      color: #4fd8ff;
-      letter-spacing: -0.04em;
-      font-weight: 500;
-    }
-
-    .center-ring {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .league {
-      color: rgba(255,255,255,0.8);
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-
-    .market {
-      color: #f0c43d;
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .percent-ring {
-      width: 118px;
-      height: 118px;
-      border-radius: 50%;
-      border: 2px dotted rgba(44, 219, 123, 0.7);
+      background: #05070d;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      font-size: 34px;
-      font-weight: 700;
-      box-shadow: 0 0 30px rgba(44,219,123,0.12);
-    }
-
-    .percent-ring span {
-      font-size: 14px;
-      display: block;
-      text-align: center;
-      color: rgba(255,255,255,0.72);
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    .profit-chip {
-      margin-top: 20px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 14px;
-      padding: 12px 18px;
-      color: rgba(255,255,255,0.92);
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    .profit-chip strong {
-      color: #31d46b;
-      font-weight: 700;
-      margin-left: 10px;
-    }
-
-    .arb-list {
-      border-radius: 22px;
-      background:
-        linear-gradient(180deg, rgba(13,16,25,0.98) 0%, rgba(8,10,16,0.98) 100%);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .arb-item {
-      border-radius: 14px;
-      padding: 14px 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.78);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-
-    .arb-item.active {
-      border: 1px solid rgba(86, 105, 255, 0.9);
-      box-shadow: 0 0 0 1px rgba(86,105,255,0.2) inset;
-      background: linear-gradient(180deg, rgba(17,26,44,0.96) 0%, rgba(11,16,27,0.98) 100%);
-    }
-
-    .arb-percent {
-      color: #f2d56a;
-      font-weight: 700;
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-
-    .sportsbooks-label {
-      position: absolute;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      font-size: 18px;
-      color: rgba(255,255,255,0.72);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      display: none;
+      padding: 24px;
     }
 
     .chatbot-container {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 380px;
-      height: 620px;
+      width: 390px;
+      height: 680px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       border-radius: 22px;
       background:
-        linear-gradient(180deg, rgba(14,18,30,0.96) 0%, rgba(8,10,18,0.98) 100%);
+        linear-gradient(180deg, rgba(14,18,30,0.98) 0%, rgba(8,10,18,0.99) 100%);
       border: 1px solid rgba(120, 130, 255, 0.18);
       box-shadow:
         0 24px 80px rgba(0,0,0,0.55),
         0 0 0 1px rgba(255,255,255,0.03) inset,
         0 0 30px rgba(94, 92, 255, 0.12);
       backdrop-filter: blur(14px);
-      z-index: 20;
     }
 
     .chatbot-header {
@@ -439,7 +66,7 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       background:
         radial-gradient(circle at top left, rgba(79,70,229,0.08) 0%, transparent 28%),
         linear-gradient(180deg, #090d17 0%, #06080f 100%);
@@ -449,7 +76,7 @@
       max-width: 84%;
       padding: 14px 16px;
       border-radius: 18px;
-      line-height: 1.45;
+      line-height: 1.5;
       font-size: 14px;
       box-shadow: 0 8px 24px rgba(0,0,0,.18);
       white-space: pre-wrap;
@@ -469,6 +96,46 @@
       background:
         linear-gradient(135deg, #5f37d8 0%, #4f46e5 55%, #3b82f6 100%);
       border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .typing {
+      align-self: flex-start;
+      display: inline-flex;
+      gap: 6px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(21,26,39,0.96) 0%, rgba(15,19,30,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: fit-content;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    .typing span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(232,236,255,0.7);
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .chatbot-input {
@@ -521,191 +188,31 @@
       opacity: 0.96;
     }
 
-    @media (max-width: 1300px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-visual {
-        min-width: auto;
-        width: 100%;
-      }
-
-      .dashboard-frame {
-        transform: none;
+    @media (max-width: 480px) {
+      body {
+        padding: 0;
       }
 
       .chatbot-container {
-        position: static;
-        margin: 0 64px 64px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .topbar {
-        padding: 18px 20px;
-      }
-
-      .hero {
-        padding: 30px 20px 40px;
-      }
-
-      .hero-copy h1 {
-        font-size: 52px;
-      }
-
-      .email-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .email-box {
-        width: 100%;
-      }
-
-      .benefits {
-        grid-template-columns: 1fr;
-      }
-
-      .chatbot-container {
-        width: calc(100% - 32px);
-        height: 65vh;
-        margin: 0 16px 24px;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="topbar">
-      <div class="topbar-left">
-        <div class="brand">AVO</div>
-        <a class="nav-link" href="#">Product</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Resources</a>
-        <a class="nav-link" href="#">Affiliates</a>
-      </div>
-      <div class="topbar-right">
-        <a class="nav-link" href="#">NY</a>
-        <button class="launch-btn">Launch</button>
-      </div>
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h3>You are talking with Avo</h3>
+      <p>Ask about arbitrage, the dashboard, or how to place both sides.</p>
     </div>
 
-    <div class="hero">
-      <div class="hero-copy">
-        <h1>Make $1000+ a week.<br>No luck involved.</h1>
-        <p class="subhead">Get weekly updates and resources for free</p>
+    <div class="chatbot-messages" id="messages"></div>
 
-        <div class="email-row">
-          <div class="email-box">Type your email here...</div>
-          <button class="send-btn">Send it</button>
-        </div>
-
-        <p class="hero-note">
-          By clicking “Send it,” you agree to receive emails from AVO. Unsubscribe anytime.
-        </p>
-
-        <div class="benefits">
-          <div class="benefit"><span class="benefit-dot"></span> No Commitments</div>
-          <div class="benefit"><span class="benefit-dot"></span> Free 1:1 Lessons</div>
-          <div class="benefit"><span class="benefit-dot"></span> Active Community</div>
-          <div class="benefit"><span class="benefit-dot"></span> No CC Required</div>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="dashboard-frame">
-          <div class="browser-bar">
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-          </div>
-
-          <div class="dashboard-body">
-            <div class="main-board">
-              <div class="main-board-top">
-                <div class="dual-open">Dual Open</div>
-              </div>
-
-              <div class="matchup">
-                <div class="side-card">
-                  <div class="team-name">Eagles</div>
-                  <div class="odds">-135</div>
-                  <div class="bet-amount">$300</div>
-                </div>
-
-                <div class="center-ring">
-                  <div>
-                    <div class="league">NFL</div>
-                    <div class="market">Moneyline</div>
-                  </div>
-                  <div class="percent-ring">
-                    <div style="text-align:center;">
-                      12.1
-                      <span>percent</span>
-                    </div>
-                  </div>
-                  <div class="profit-chip">Profit <strong>$55.88</strong></div>
-                </div>
-
-                <div class="side-card">
-                  <div class="team-name">Chiefs</div>
-                  <div class="odds">+215</div>
-                  <div class="bet-amount">$165</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="arb-list">
-              <div class="arb-item active">
-                <div class="arb-percent">12.1%</div>
-                Philadelphia Eagles @ Kansas City Chiefs<br />
-                Moneyline
-              </div>
-              <div class="arb-item">
-                <div class="arb-percent">11.5%</div>
-                Los Angeles Dodgers @ Tampa Bay Rays<br />
-                Point Spread
-              </div>
-              <div class="arb-item">
-                <div class="arb-percent">9.3%</div>
-                Alexander Zverev @ Brandon Nakashima<br />
-                Moneyline
-              </div>
-              <div class="arb-item">
-                <div class="arb-percent">8.1%</div>
-                Houston Texans @ Los Angeles Rams<br />
-                Total Points
-              </div>
-              <div class="arb-item">
-                <div class="arb-percent">3.7%</div>
-                Atlanta Falcons @ Carolina Panthers<br />
-                1st 5 Innings
-              </div>
-              <div class="arb-item">
-                <div class="arb-percent">2.4%</div>
-                Minnesota Twins @ Detroit Tigers<br />
-                Moneyline
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="chatbot-container">
-      <div class="chatbot-header">
-        <h3>You are talking with Avo</h3>
-        <p>Ask about arbitrage, the dashboard, or how to place both sides.</p>
-      </div>
-
-      <div class="chatbot-messages" id="messages"></div>
-
-      <div class="chatbot-input">
-        <input id="userInput" type="text" placeholder="Type your message..." />
-        <button id="sendBtn">Send</button>
-      </div>
+    <div class="chatbot-input">
+      <input id="userInput" type="text" placeholder="Type your message..." />
+      <button id="sendBtn">Send</button>
     </div>
   </div>
 
@@ -714,12 +221,44 @@
     const input = document.getElementById("userInput");
     const sendBtn = document.getElementById("sendBtn");
 
+    function scrollToBottom() {
+      messages.scrollTop = messages.scrollHeight;
+    }
+
     function addMessage(text, sender = "bot") {
       const div = document.createElement("div");
       div.className = `message ${sender}`;
       div.textContent = text;
       messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
+      scrollToBottom();
+    }
+
+    function addTyping() {
+      const typing = document.createElement("div");
+      typing.className = "typing";
+      typing.id = "typing-indicator";
+      typing.innerHTML = "<span></span><span></span><span></span>";
+      messages.appendChild(typing);
+      scrollToBottom();
+    }
+
+    function removeTyping() {
+      const typing = document.getElementById("typing-indicator");
+      if (typing) typing.remove();
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function sendBotBubbles(parts) {
+      for (let i = 0; i < parts.length; i++) {
+        addTyping();
+        await sleep(650 + (i * 120));
+        removeTyping();
+        addMessage(parts[i], "bot");
+        await sleep(320);
+      }
     }
 
     async function sendMessage(text) {
@@ -739,29 +278,44 @@
         });
 
         const data = await res.json();
-        addMessage(data.reply || "Sorry, I hit an error.", "bot");
+        const reply = (data.reply || "Sorry, I hit an error.").trim();
+
+        const parts = reply
+          .split(/\n\s*\n/)
+          .map(part => part.trim())
+          .filter(Boolean);
+
+        if (parts.length) {
+          await sendBotBubbles(parts);
+        } else {
+          await sendBotBubbles(["Sorry, I hit an error."]);
+        }
       } catch (error) {
-        addMessage("Sorry, the chatbot hit an error.", "bot");
+        await sendBotBubbles(["Sorry, the chatbot hit an error."]);
       }
     }
 
-    sendBtn.addEventListener("click", () => {
+    sendBtn.addEventListener("click", async () => {
       const text = input.value.trim();
       if (!text) return;
       input.value = "";
-      sendMessage(text);
+      await sendMessage(text);
     });
 
-    input.addEventListener("keydown", (e) => {
+    input.addEventListener("keydown", async (e) => {
       if (e.key === "Enter") {
         const text = input.value.trim();
         if (!text) return;
         input.value = "";
-        sendMessage(text);
+        await sendMessage(text);
       }
     });
 
-    addMessage("Want me to show you how this works?", "bot");
+    (async function openConversation() {
+      await sendBotBubbles([
+        "Want me to show you how this works?"
+      ]);
+    })();
   </script>
 </body>
 </html>
