@@ -66,7 +66,7 @@ Return to helping them use the dashboard.
 Do not repeat definitions unless the user directly asks again.
 
 Examples of good direction:
-- "Click one of the arbs on the right and I’ll walk you through it."
+- "Click one of the arbs on the right and I'll walk you through it."
 - "Have you connected the sportsbooks you use yet?"
 - "If you change the amount on one side, Avo will update the counter bet for you."
 - "Want to give me your email so we can keep you posted on feature updates?"
@@ -143,20 +143,23 @@ app.get("/health", (req, res) => {
 
 app.post("/api/chat", async (req, res) => {
   try {
-    const { message, page = "homepage", isLoggedIn = false } = req.body;
+    const body = req.body || {};
+    const message = body.message || "";
+    const page = body.page || "homepage";
+    const isLoggedIn = body.isLoggedIn || false;
 
     const response = await client.responses.create({
       model: "gpt-4.1-mini",
       input: [
         {
           role: "system",
-          content: getSystemPrompt(page, isLoggedIn),
+          content: getSystemPrompt(page, isLoggedIn)
         },
         {
           role: "user",
-          content: message,
-        },
-      ],
+          content: message
+        }
+      ]
     });
 
     res.json({
@@ -172,5 +175,5 @@ app.post("/api/chat", async (req, res) => {
 
 const port = process.env.PORT || 10000;
 app.listen(port, () => {
-  console.log(\`Server running on port \${port}\`);
+  console.log("Server running on port " + port);
 });
