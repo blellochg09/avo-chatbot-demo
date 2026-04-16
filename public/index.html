@@ -13,7 +13,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: Arial, sans-serif;
-      background: #05070d;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -34,7 +34,6 @@
         0 24px 80px rgba(0,0,0,0.55),
         0 0 0 1px rgba(255,255,255,0.03) inset,
         0 0 30px rgba(94, 92, 255, 0.12);
-      backdrop-filter: blur(14px);
     }
 
     .chatbot-header {
@@ -50,13 +49,11 @@
       font-size: 18px;
       font-weight: 700;
       color: #f5f7ff;
-      letter-spacing: -0.02em;
     }
 
     .chatbot-header p {
       margin: 0;
       font-size: 13px;
-      line-height: 1.4;
       color: rgba(214,221,255,0.72);
     }
 
@@ -95,7 +92,6 @@
       color: #ffffff;
       background:
         linear-gradient(135deg, #5f37d8 0%, #4f46e5 55%, #3b82f6 100%);
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .typing {
@@ -107,8 +103,6 @@
       background:
         linear-gradient(180deg, rgba(21,26,39,0.96) 0%, rgba(15,19,30,0.98) 100%);
       border: 1px solid rgba(255,255,255,0.06);
-      width: fit-content;
-      box-shadow: 0 8px 24px rgba(0,0,0,.18);
     }
 
     .typing span {
@@ -119,31 +113,19 @@
       animation: bounce 1s infinite ease-in-out;
     }
 
-    .typing span:nth-child(2) {
-      animation-delay: 0.15s;
-    }
-
-    .typing span:nth-child(3) {
-      animation-delay: 0.3s;
-    }
+    .typing span:nth-child(2) { animation-delay: 0.15s; }
+    .typing span:nth-child(3) { animation-delay: 0.3s; }
 
     @keyframes bounce {
-      0%, 80%, 100% {
-        transform: scale(0.8);
-        opacity: 0.5;
-      }
-      40% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0%,80%,100% { transform: scale(0.8); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
     }
 
     .chatbot-input {
       display: flex;
       gap: 10px;
       padding: 14px;
-      background:
-        linear-gradient(180deg, rgba(11,14,24,0.96) 0%, rgba(9,11,19,0.98) 100%);
+      background: #0b0f19;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -156,17 +138,6 @@
       padding: 12px 14px;
       font-size: 14px;
       outline: none;
-      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    .chatbot-input input::placeholder {
-      color: rgba(204,212,255,0.42);
-    }
-
-    .chatbot-input input:focus {
-      border-color: rgba(95,55,216,0.55);
-      box-shadow: 0 0 0 3px rgba(95,55,216,0.14);
-      background: rgba(255,255,255,0.045);
     }
 
     .chatbot-input button {
@@ -175,29 +146,9 @@
       border-radius: 14px;
       padding: 0 18px;
       font-size: 14px;
-      font-weight: 600;
       cursor: pointer;
       background:
         linear-gradient(135deg, #5f37d8 0%, #4f46e5 60%, #3b82f6 100%);
-      box-shadow: 0 10px 24px rgba(79,70,229,0.28);
-      transition: transform .15s ease, opacity .15s ease;
-    }
-
-    .chatbot-input button:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 0;
-      }
-
-      .chatbot-container {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-      }
     }
   </style>
 </head>
@@ -205,13 +156,13 @@
   <div class="chatbot-container">
     <div class="chatbot-header">
       <h3>You are talking with Avo</h3>
-      <p>Ask about arbitrage, the dashboard, or how to place both sides.</p>
+      <p>Ask anything</p>
     </div>
 
     <div class="chatbot-messages" id="messages"></div>
 
     <div class="chatbot-input">
-      <input id="userInput" type="text" placeholder="Type your message..." />
+      <input id="userInput" placeholder="Type your message..." />
       <button id="sendBtn">Send</button>
     </div>
   </div>
@@ -221,101 +172,77 @@
     const input = document.getElementById("userInput");
     const sendBtn = document.getElementById("sendBtn");
 
-    function scrollToBottom() {
+    function addMessage(text, sender) {
+      const m = document.createElement("div");
+      m.className = "message " + sender;
+      m.innerText = text;
+      messages.appendChild(m);
       messages.scrollTop = messages.scrollHeight;
     }
 
-    function addMessage(text, sender = "bot") {
-      const div = document.createElement("div");
-      div.className = `message ${sender}`;
-      div.textContent = text;
-      messages.appendChild(div);
-      scrollToBottom();
-    }
-
-    function addTyping() {
-      const typing = document.createElement("div");
-      typing.className = "typing";
-      typing.id = "typing-indicator";
-      typing.innerHTML = "<span></span><span></span><span></span>";
-      messages.appendChild(typing);
-      scrollToBottom();
+    function typing() {
+      const t = document.createElement("div");
+      t.className = "typing";
+      t.id = "typing";
+      t.innerHTML = "<span></span><span></span><span></span>";
+      messages.appendChild(t);
+      messages.scrollTop = messages.scrollHeight;
     }
 
     function removeTyping() {
-      const typing = document.getElementById("typing-indicator");
-      if (typing) typing.remove();
+      const t = document.getElementById("typing");
+      if (t) t.remove();
     }
 
     function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
+      return new Promise(r => setTimeout(r, ms));
     }
 
-    async function sendBotBubbles(parts) {
-      for (let i = 0; i < parts.length; i++) {
-        addTyping();
-        await sleep(650 + (i * 120));
+    async function botSequence(parts) {
+      for (let p of parts) {
+        typing();
+        await sleep(700);
         removeTyping();
-        addMessage(parts[i], "bot");
-        await sleep(320);
+        addMessage(p, "bot");
+        await sleep(350);
       }
     }
 
     async function sendMessage(text) {
       addMessage(text, "user");
 
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            message: text,
-            page: "homepage",
-            isLoggedIn: false
-          })
-        });
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+          message: text,
+          page: "homepage",
+          isLoggedIn: false
+        })
+      });
 
-        const data = await res.json();
-        const reply = (data.reply || "Sorry, I hit an error.").trim();
+      const data = await res.json();
 
-        const parts = reply
-          .split(/\n\s*\n/)
-          .map(part => part.trim())
-          .filter(Boolean);
-
-        if (parts.length) {
-          await sendBotBubbles(parts);
-        } else {
-          await sendBotBubbles(["Sorry, I hit an error."]);
-        }
-      } catch (error) {
-        await sendBotBubbles(["Sorry, the chatbot hit an error."]);
-      }
+      const parts = data.reply.split("\n\n");
+      botSequence(parts);
     }
 
-    sendBtn.addEventListener("click", async () => {
-      const text = input.value.trim();
-      if (!text) return;
+    sendBtn.onclick = () => {
+      if (!input.value) return;
+      const text = input.value;
       input.value = "";
-      await sendMessage(text);
-    });
+      sendMessage(text);
+    };
 
-    input.addEventListener("keydown", async (e) => {
+    input.addEventListener("keydown", e => {
       if (e.key === "Enter") {
-        const text = input.value.trim();
-        if (!text) return;
-        input.value = "";
-        await sendMessage(text);
+        sendBtn.onclick();
       }
     });
 
-    (async function openConversation() {
-      await sendBotBubbles([
-        "Want me to show you how this works?"
-      ]);
-    })();
+    botSequence([
+      "Want me to show you how this works?"
+    ]);
   </script>
 </body>
 </html>
